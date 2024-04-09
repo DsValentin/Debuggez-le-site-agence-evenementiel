@@ -5,18 +5,22 @@
   width: 100%;
   max-width: 1440px;
   height: 586px;
+
   .SlideCard {
     width: 100%;
     left: 0;
     top: 0;
     position: absolute;
     transition: opacity 1s;
+
     &--hide {
       opacity: 0;
     }
+
     &--display {
       animation: slide 1s forwards;
     }
+
     &__descriptionContainer {
       position: absolute;
       left: 0;
@@ -25,6 +29,7 @@
       justify-content: center;
       width: 100%;
     }
+
     &__paginationContainer {
       position: absolute;
       left: 0;
@@ -32,13 +37,21 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      input {
-        width: 16px;
-        height: 16px;
-        min-width: 0;
-        color: $primary;
+
+      .SlideCard__pagination {
+        input {
+          width: 16px;
+          height: 16px;
+          min-width: 0;
+          color: $primary;
+
+          &.selected {
+            background-color: #4314ff; // Couleur pour le bullet sélectionné
+          }
+        }
       }
     }
+
     &__description {
       left: 0;
       bottom: 50px;
@@ -48,6 +61,7 @@
       border-radius: 8px;
       display: flex;
       font-family: "Space Grotesk", sans-serif;
+
       h3 {
         width: 45%;
         border-right: 1px solid #4314ff;
@@ -58,6 +72,7 @@
         align-items: center;
         margin: 0;
       }
+
       p {
         width: 35%;
         display: flex;
@@ -65,6 +80,7 @@
         padding: 16px;
         font-size: 18px;
       }
+
       div {
         width: 5%;
         display: flex;
