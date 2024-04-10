@@ -16,7 +16,8 @@ const EventList = () => {
   const filteredEvents = (
     (!type
       ? data?.events
-      : data?.events) || []
+      : // Filtrage des événements en fonction du type sélectionné
+        data?.events.filter((event) => event.type === type)) || []
   ).filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&
@@ -49,6 +50,7 @@ const EventList = () => {
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
                   <EventCard
+                    key={event.id}
                     onClick={() => setIsOpened(true)}
                     imageSrc={event.cover}
                     title={event.title}
