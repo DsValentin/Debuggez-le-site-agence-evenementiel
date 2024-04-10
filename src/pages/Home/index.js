@@ -13,13 +13,7 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const { data } = useData();
-  // // Dans la const last, on trie les events dans l'ordre du plus récent au plus ancien et
-  // // on indique que last est le premier élément du tableau soit [0]
-  const last = data?.events.sort((evtA, evtB) =>
-    new Date(evtA.date) < new Date(evtB.date) ? 1 : -1
-  )[0];
-
+  const { last } = useData();
   return (
     <>
       <header>
@@ -29,7 +23,7 @@ const Page = () => {
         <section className="SliderContainer">
           <Slider />
         </section>
-        <section className="ServicesContainer" id="nos-services">
+        <section className="ServicesContainer">
           <h2 className="Title">Nos services</h2>
           <p>Nous organisons des événements sur mesure partout dans le monde</p>
           <div className="ListContainer">
@@ -42,7 +36,7 @@ const Page = () => {
             </ServiceCard>
             <ServiceCard imageSrc="/images/hall-expo.png">
               <h3>Conférences</h3>
-              77 events vous propose d’organiser votre évènement, quelle que
+              724 events vous propose d’organiser votre évènement, quelle que
               soit sa taille, en s’adaptant à votre demande et à vos demandes.
               En tant que spécialistes de l’évènementiel, nous saurons trouver
               le lieu parfait ainsi que des solutions inédites pour capter votre
@@ -58,14 +52,14 @@ const Page = () => {
             </ServiceCard>
           </div>
         </section>
-        <section className="EventsContainer" id="nos-realisations">
+        <section className="EventsContainer">
           <h2 className="Title">Nos réalisations</h2>
-          <EventList data-testid="eventsList-test" />
+          <EventList />
         </section>
-        <section className="PeoplesContainer" id="notre-equipe">
+        <section className="PeoplesContainer">
           <h2 className="Title">Notre équipe</h2>
           <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
-          <div className="ListContainer" data-testid="listTeamCard-test">
+          <div className="ListContainer">
             <PeopleCard
               imageSrc="/images/stephanie-liverani-Zz5LQe-VSMY-unsplash.png"
               name="Samira"
@@ -117,28 +111,22 @@ const Page = () => {
           </Modal>
         </div>
       </main>
-      <footer className="row" data-testid="footer-test">
+      <footer className="row">
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
-          {/* Si data est null on affiche loading sinon on renvois le composant events card */}
-          {data === null ? (
-            "loading"
-          ) : (
-            <EventCard
-              data-testid="lastEventCard-test"
-              imageSrc={last?.cover}
-              title={last?.title}
-              date={new Date(last?.date)}
-              small
-              label={last?.type}
-            />
-          )}
+          <EventCard
+            imageSrc={last?.cover}
+            title={last?.title}
+            date={new Date(last?.date)}
+            small
+            label="boom"
+          />
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
           <address>45 avenue de la République, 75000 Paris</address>
           <div>01 23 45 67 89</div>
-          <div>contact@77events.com</div>
+          <div>contact@724events.com</div>
           <div>
             <a href="#twitch">
               <Icon name="twitch" />
