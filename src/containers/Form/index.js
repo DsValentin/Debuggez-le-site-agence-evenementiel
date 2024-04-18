@@ -6,7 +6,7 @@ import Button, { BUTTON_TYPES } from "../../components/Button";
 
 const mockContactApi = () =>
   new Promise((resolve) => {
-    setTimeout(resolve, 1000);
+    setTimeout(resolve, 500);
   });
 
 const Form = ({ onSuccess, onError }) => {
@@ -19,11 +19,14 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
+        // Rajout du onSuccess
+        onSuccess();
       } catch (err) {
         setSending(false);
         onError(err);
       }
     },
+    // Le onSucess n'étais pas utilisé
     [onSuccess, onError]
   );
   return (
@@ -55,15 +58,12 @@ const Form = ({ onSuccess, onError }) => {
     </form>
   );
 };
-
 Form.propTypes = {
   onError: PropTypes.func,
   onSuccess: PropTypes.func,
 };
-
 Form.defaultProps = {
   onError: () => null,
   onSuccess: () => null,
 };
-
 export default Form;
