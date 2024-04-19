@@ -10,11 +10,10 @@ const EventCard = ({
   title,
   label,
   small = false,
-  dataTestId,
   ...props
 }) => (
   <div
-    data-testid={dataTestId}
+    data-testid="card-testid"
     className={`EventCard${small ? " EventCard--small" : ""}`}
     {...props}
   >
@@ -36,13 +35,11 @@ EventCard.propTypes = {
   title: PropTypes.string.isRequired,
   small: PropTypes.bool,
   label: PropTypes.string.isRequired,
-  dataTestId: PropTypes.string,
 };
 
 EventCard.defaultProps = {
   imageAlt: "image",
   small: false,
-  dataTestId: "card-testid",
 };
 
 export default EventCard;
