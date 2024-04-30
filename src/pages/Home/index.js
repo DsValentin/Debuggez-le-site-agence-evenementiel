@@ -120,12 +120,11 @@ const Home = () => {
           </Modal>
         </div>
       </main>
-      <footer data-testid="footer-testid" className="row">
+      <footer className="row">
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
           {last && (
             <EventCard
-              dataTestId="lastEvent-testid"
               imageSrc={last?.cover}
               title={last?.title}
               date={new Date(last?.date)}
@@ -133,7 +132,6 @@ const Home = () => {
               label="boom"
             />
           )}
-          ;
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
